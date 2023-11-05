@@ -80,7 +80,7 @@ choseSize.forEach(element =>{
         colFunc(30, 30);
         const rowDiv = document.querySelectorAll('.rowDiv');
         rowDiv.forEach(element =>{
-            element.style.cssText = ('width: 16px; height: 16px;')
+            element.style.cssText = ('width: 16.7px; height: 16.7px;')
         })
 
        }
