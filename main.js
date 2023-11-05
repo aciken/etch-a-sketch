@@ -4,7 +4,8 @@ const clearBtn = document.getElementById('clearBtn');
 const choseSize = document.querySelectorAll('.choseSize');
 const grid = document.querySelector('.grid');
 
-
+var randomColor = Math.floor(Math.random()*16777215).toString(16);
+var randomColor2 = Math.floor(Math.random()*16777215).toString(16);
 
 let colorValue = 'black';
 
@@ -48,6 +49,7 @@ colFunc(10,10)
 
 
 choseSize.forEach(element =>{
+    element.style.cssText = `background-color: #${randomColor}`;
     element.addEventListener('click', (e) =>{
        if(e.target.textContent === '10x10'){
         while(grid.firstChild){
@@ -87,7 +89,7 @@ choseSize.forEach(element =>{
     })
 })
 
-
+clearBtn.style.cssText = `background-color: #${randomColor2}`;
 
 clearBtn.addEventListener('click', () =>{
     const rowDiv = document.querySelectorAll('.rowDiv');   
