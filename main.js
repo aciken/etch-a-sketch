@@ -3,6 +3,11 @@ const colorInput = document.getElementById('colorInput');
 const clearBtn = document.getElementById('clearBtn');
 const choseSize = document.querySelectorAll('.choseSize');
 const grid = document.querySelector('.grid');
+const range = document.querySelector('.sizeSlide')
+
+
+
+
 
 var randomColor = Math.floor(Math.random()*16777215).toString(16);
 var randomColor2 = Math.floor(Math.random()*16777215).toString(16);
@@ -45,49 +50,27 @@ container.addEventListener('mouseover', (e) =>{
 colFunc(10,10)
 
 
-
-
-
-choseSize.forEach(element =>{
-    element.style.cssText = `background-color: #${randomColor}`;
-    element.addEventListener('click', (e) =>{
-       if(e.target.textContent === '10x10'){
-        while(grid.firstChild){
-            grid.removeChild(grid.firstChild);
-
-        }
-
-        colFunc(10,10);
-        const rowDiv = document.querySelectorAll('.rowDiv');
-        rowDiv.forEach(element =>{
-            element.style.cssText = ('width: 50px; height: 50px;')
+range.addEventListener('click', ()=>{
+    while(grid.firstChild){
+        grid.removeChild(grid.firstChild);
+    }
+    if(range.value > 10){
+    colFunc(range.value, range.value);
+    const rowDiv = document.querySelectorAll('.rowDiv');
+       rowDiv.forEach(element =>{
+             element.style.cssText = `width: ${500/range.value}px; height: ${500/range.value}px;`
         })
-
-       } else if(e.target.textContent === '20x20'){
-        while(grid.firstChild){
-            grid.removeChild(grid.firstChild);
-        }
-
-        colFunc(20, 20);
+    } else{
+        colFunc(10, 10);
         const rowDiv = document.querySelectorAll('.rowDiv');
-        rowDiv.forEach(element =>{
-            element.style.cssText = ('width: 25px; height: 25px;')
-        })
+           rowDiv.forEach(element =>{
+                 element.style.cssText = `width: 50px; height: 50px;`
+            })
+    }
 
-       } else {
-        while(grid.firstChild){
-            grid.removeChild(grid.firstChild);
-        }
-
-        colFunc(30, 30);
-        const rowDiv = document.querySelectorAll('.rowDiv');
-        rowDiv.forEach(element =>{
-            element.style.cssText = ('width: 16.7px; height: 16.7px;')
-        })
-
-       }
-    })
 })
+
+
 
 clearBtn.style.cssText = `background-color: #${randomColor2}`;
 
