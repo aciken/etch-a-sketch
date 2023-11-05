@@ -4,15 +4,20 @@ const clearBtn = document.getElementById('clearBtn');
 const choseSize = document.querySelectorAll('.choseSize');
 const grid = document.querySelector('.grid');
 const range = document.querySelector('.sizeSlide')
-
-
-
-
+const rainbowBtn = document.querySelector('.rainbow')
 
 var randomColor = Math.floor(Math.random()*16777215).toString(16);
 var randomColor2 = Math.floor(Math.random()*16777215).toString(16);
+rainbowBtn.style.cssText = `background-color: #${randomColor};`;
+
 
 let colorValue = 'black';
+
+
+rainbowBtn.addEventListener('click', () =>{
+    rainbowBtn.classList.toggle('clicked');
+    console.log(rainbowBtn.classList.value);
+})
 
 
 colorInput.addEventListener('blur', ()=>{
@@ -39,11 +44,17 @@ const colFunc = (row ,col) =>{
     }
 }
 
+
+
 container.addEventListener('mouseover', (e) =>{
+    let divColor = Math.floor(Math.random()*16777215).toString(16);
     if(e.target.classList.value === 'rowDiv'){
+        if(rainbowBtn.classList.value === 'rainbow clicked'){
+        e.target.style.cssText += `background-color: #${divColor};`;
+    } else {
         e.target.style.cssText += ` background-color: ${colorValue}`;
     }
-
+}
 })
 
 
