@@ -35,7 +35,7 @@ const colFunc = (row ,col) =>{
 
 container.addEventListener('mouseover', (e) =>{
     if(e.target.classList.value === 'rowDiv'){
-        e.target.style.cssText = `background-color: ${colorValue}`;
+        e.target.style.cssText += ` background-color: ${colorValue}`;
     }
 
 })
@@ -43,13 +43,7 @@ container.addEventListener('mouseover', (e) =>{
 
 colFunc(10,10)
 
-clearBtn.addEventListener('click', () =>{
-    rowDiv.forEach(element =>{
-        console.log('asd');
-       element.style.cssText = 'background-color: white';
-    });
 
-});
 
 
 
@@ -60,30 +54,48 @@ choseSize.forEach(element =>{
             grid.removeChild(grid.firstChild);
 
         }
-        rowDiv.forEach(element =>{
-            element.style.cssText = 'min-width: 40px; min-height: 40px;';
-        })
+
         colFunc(10,10);
+        const rowDiv = document.querySelectorAll('.rowDiv');
+        rowDiv.forEach(element =>{
+            element.style.cssText = ('width: 50px; height: 50px;')
+        })
+
        } else if(e.target.textContent === '20x20'){
         while(grid.firstChild){
             grid.removeChild(grid.firstChild);
         }
+
+        colFunc(20, 20);
+        const rowDiv = document.querySelectorAll('.rowDiv');
         rowDiv.forEach(element =>{
-            element.style.cssText = 'min-width: 20px; min-height: 20px;';
+            element.style.cssText = ('width: 25px; height: 25px;')
         })
-        colFunc(20, 20)
+
        } else {
         while(grid.firstChild){
             grid.removeChild(grid.firstChild);
         }
-        rowDiv.forEach(element =>{
-            element.style.cssText = 'min-width: 10px; min-height: 10px;';
-        })
+
         colFunc(30, 30);
+        const rowDiv = document.querySelectorAll('.rowDiv');
+        rowDiv.forEach(element =>{
+            element.style.cssText = ('width: 16px; height: 16px;')
+        })
+
        }
     })
 })
 
 
 
-const rowDiv = document.querySelectorAll('.rowDiv');
+clearBtn.addEventListener('click', () =>{
+    const rowDiv = document.querySelectorAll('.rowDiv');   
+    rowDiv.forEach(element =>{
+        console.log(element.style.width);
+        element.style.cssText = `background=-color: white; width: ${element.style.width}; height: ${element.style.height};`;
+    });
+
+});
+
+
